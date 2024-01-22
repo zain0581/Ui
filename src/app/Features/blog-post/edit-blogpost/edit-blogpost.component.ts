@@ -50,7 +50,6 @@ export class EditBlogpostComponent implements OnInit, OnDestroy{
             }
           })
         }
-
       this.imageselectsubscription =  this.ImageService.onSelectImage().subscribe({
           next: (response)=>{
             if(this.model){
@@ -59,9 +58,7 @@ export class EditBlogpostComponent implements OnInit, OnDestroy{
             }
           }
         })
-
       }
-
    })
   }
 
