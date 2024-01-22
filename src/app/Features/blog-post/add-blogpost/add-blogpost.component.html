@@ -1,0 +1,119 @@
+<div class="container">
+    <h1 class="mt-3"> Add blogpost</h1>
+    <form #form="ngForm" (ngSubmit)="onFormSubmit()">
+        <div class="mt-2 mb-5">
+
+            <div class="mt-3">
+                <label for="Title" class="form-label">Blogpost Title</label>
+                <input type="text" id="Title" class="form-control" name="Title" [(ngModel)]="model.Title">
+            </div>
+
+            <div class="mt-3">
+                <label for="UrlHandle" class="form-label">UrlHandle</label>
+                <input type="text" id="UrlHandle" class="form-control" name="UrlHandle" [(ngModel)]="model.UrlHandle">
+            </div>
+
+
+            <div class="mt-3">
+                <label for="ShortDescription" class="form-label">ShortDescription</label>
+                <input type="text" id="ShortDescription" class="form-control" name="ShortDescription" [(ngModel)]="model.ShortDescription">
+            </div>
+
+
+            <div class="mt-3">
+                <label for="Content" class="form-label">Content</label>
+                <div class="d-flex flex-row">
+                  <div class="col-6 p-2">
+                    <textarea name="Content" id="Content" class="form-control" style="height: 350px; max-height: 350px;" [(ngModel)]="model.Content"></textarea>
+                  </div>
+                  <div class="col-6 p-2" style="height: 350px; overflow-y: scroll;">
+                  <markdown [data]="model.Content"></markdown>
+                  </div>
+                </div>
+              </div>
+              
+              
+
+
+            <div class="mt-3">
+                <label for="model.FeatureImageUrl" class="form-label">FeatureImageUrl
+                  <button type="button" class="btn btn-light" (click)="openImageSelector()"> select Image</button>
+                </label>
+                <ng-container *ngIf="model.FeatureImageUrl !==''">
+                  <div>
+                    <img [src]="model.FeatureImageUrl" height="100" class="my-2">
+                  </div>
+                
+                
+                </ng-container>
+
+
+                <input type="text" id="FeatureImageUrl" class="form-control" name="FeatureImageUrl" [(ngModel)]="model.FeatureImageUrl">
+            </div>
+
+
+            <div class="mt-3">
+                <label for="PublishedDate" class="form-label">PublishedDate</label>
+                <input type="date" id="PublishedDate" class="form-control" name="PublishedDate" value="{{model.PublishedDate}}" [ngModel]="model.PublishedDate | date:'yyy-MM-dd'" (ngModelChange)="model.PublishedDate = $event">
+            </div>
+
+
+            <div class="mt-3">
+                <label for="Author" class="form-label">Author</label>
+                <input type="text" id="Author" class="form-control" name="Author" [(ngModel)]="model.Author">
+            </div>
+
+
+
+            <div class="form-check mt-3">
+                <input class="form-check-input" type="checkbox"  id="IsVisible" [(ngModel)]="model.IsVisible" name="IsVisible">
+                <label class="form-check-label" for="IsVisible" >Is Visible?</label>
+              </div>
+
+              <div class="mt-3">
+                <label class="form-label" for="categories" >categories?</label>
+                <ng-container *ngIf="categories$ | async as categories">
+                  <select class="form-control" id="categories" name="categories" multiple [(ngModel)]="model.Categories" >
+                    <option *ngFor="let cat of categories" [value]="cat.id">{{cat.name}}</option>
+                  </select> 
+                
+                </ng-container>
+
+              </div>
+
+              <div class="mt-3">
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+     
+      </form>
+      
+</div>
+
+
+<!-- Image Selector Modal -->
+<div class="images-container-modal" [ngClass]="{'d-block':IsImageSelecterVisible,'d-none': !IsImageSelecterVisible}">
+  <button type="button" class="btn btn-light" style="position: fixed; top: 10px; right:10px" (click)="closeImageSelector()">X</button>
+  <app-image-selector></app-image-selector>
+
+</div>

@@ -1,0 +1,84 @@
+<!-- <div class="container">
+    <div class="my-5">
+     <div class="row align-items-stretch">
+         <ng-container *ngIf="blogs$ | async as blogs">
+         <div class="col-12 col-md-4 mb-3" *ngFor="let blog of blogs">
+         <div class="card h-100">
+             <img [src]="blog.featureImageUrl" class="card-img-top" [alt]="blog.title">
+             <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{blog.title}}</h5>
+                <p class="card-text"> {{blog.shortDescription}}</p>
+                <span class="d-flex align-items-end" style="flex: 1;">
+                <a [routerLink]="['/blog',blog.urlHandle]" class="btn btn-primary">Read More</a>
+                </span>
+             </div>
+         </div>
+         
+         </div>
+         
+         </ng-container>
+     </div>
+    </div> 
+ </div>
+  -->
+ <!-- <div class="container">
+    <div class="my-5">
+        <ng-container *ngIf="blogs$ | async as blogs">
+            <div class="row">
+                <div class="col-12">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let blog of blogs">
+                            <div class="d-flex align-items-center">
+                                <img [src]="blog.featureImageUrl" alt="{{ blog.title }}" class="me-3" style="max-width: 100px; max-height: 100px;">
+                                <div>
+                                    <h5 class="mb-1">{{ blog.title }}</h5>
+                                    <p class="mb-1">{{ blog.shortDescription }}</p>
+                                    <a [routerLink]="['/blog', blog.urlHandle]" class="btn btn-primary">Read More</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ng-container>
+    </div>
+</div> 
+
+
+
+
+
+
+-->
+
+
+<div class="container">
+    <div class="my-5">
+        <ng-container *ngIf="blogs$ | async as blogs">
+            <ul class="list-group">
+                <li *ngFor="let blog of blogs" class="list-group-item">
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <img [src]="blog.featureImageUrl" alt="{{ blog.title }}" class="img-fluid">
+                        </div>
+                        <div class="col-12 col-md-8">
+                            <h5>{{ blog.title }}</h5>
+                            <p>{{ blog.shortDescription }}</p>
+                            <a [routerLink]="['/blog', blog.urlHandle]" class="btn btn-primary">Read More</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </ng-container>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+ 
