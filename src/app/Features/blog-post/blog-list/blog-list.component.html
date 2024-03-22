@@ -4,6 +4,7 @@
     <a [routerLink]="['/admin/blogposts/add']" class="btn btn-primary">Add BlogPost</a>
   </div>
 
+  
   <ng-container *ngIf="blogposts$ | async as blogposts">
     <div class="table-responsive mt-3">
       <table class="table table-bordered table-hover">
